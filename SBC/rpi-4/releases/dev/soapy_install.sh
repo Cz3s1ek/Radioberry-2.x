@@ -48,7 +48,7 @@ elif [[ $input == "SoapyRadioberrySDR" ]]; then
 	install_dependency cmake
 	
 	cd /tmp
-	git clone --depth=1 https://github.com/pa3gsb/Radioberry-2.x.git
+	git clone --depth=1 https://github.com/Cz3s1ek/Radioberry-2.x.git
 	cd Radioberry-2.x/SBC/rpi-4/SoapyRadioberrySDR
 	mkdir build
 	cd build
