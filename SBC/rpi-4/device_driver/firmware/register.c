@@ -119,31 +119,31 @@ ssize_t process_http(int sockfd, char *host, char *page, char *poststr)
 int postRadioberryConfiguration() {
 	
 	int result = 0;
-	int sockfd;
-	struct sockaddr_in servaddr;
-
-	char **pptr;
-	char *hname = "www.pa3gsb.nl";
-	char *page = "/radioberry/api/write.php";
-	char *poststr = "macaddress=%s&radiocall=%s&radiolocator=%s&gatewareversion=%s&driverversion=%s&firmwareversion=%s&fpgatype=%s\r\n";
-
-	// make message for registration.
-	char post_message[4096];
-	sprintf(post_message,poststr, macaddress, radiocall, radiolocator, gatewareversion, driverversion, firmwareversion, fpgatype);
-
-	char str[50];
-	struct hostent *hptr;
-	if ((hptr = gethostbyname(hname)) == NULL) return -1;
-	if (hptr->h_addrtype == AF_INET && (pptr = hptr->h_addr_list) != NULL) inet_ntop(hptr->h_addrtype, *pptr, str, sizeof(str));
-	sockfd = socket(AF_INET, SOCK_STREAM, 0);
-	bzero(&servaddr, sizeof(servaddr));
-	servaddr.sin_family = AF_INET;
-	servaddr.sin_port = htons(80);
-	inet_pton(AF_INET, str, &servaddr.sin_addr);
-	
-	if (connect(sockfd, (SA *) & servaddr, sizeof(servaddr)) >= 0) 	process_http(sockfd, hname, page, post_message); else result = -1;
-	
-	close(sockfd);
+//	int sockfd;
+//	struct sockaddr_in servaddr;
+//
+//	char **pptr;
+//	char *hname = "www.pa3gsb.nl";
+//	char *page = "/radioberry/api/write.php";
+//	char *poststr = "macaddress=%s&radiocall=%s&radiolocator=%s&gatewareversion=%s&driverversion=%s&firmwareversion=%s&fpgatype=%s\r\n";
+//
+//	// make message for registration.
+//	char post_message[4096];
+//	sprintf(post_message,poststr, macaddress, radiocall, radiolocator, gatewareversion, driverversion, firmwareversion, fpgatype);
+//
+//	char str[50];
+//	struct hostent *hptr;
+//	if ((hptr = gethostbyname(hname)) == NULL) return -1;
+//	if (hptr->h_addrtype == AF_INET && (pptr = hptr->h_addr_list) != NULL) inet_ntop(hptr->h_addrtype, *pptr, str, sizeof(str));
+//	sockfd = socket(AF_INET, SOCK_STREAM, 0);
+//	bzero(&servaddr, sizeof(servaddr));
+//	servaddr.sin_family = AF_INET;
+//	servaddr.sin_port = htons(80);
+//	inet_pton(AF_INET, str, &servaddr.sin_addr);
+//	
+//	if (connect(sockfd, (SA *) & servaddr, sizeof(servaddr)) >= 0) 	process_http(sockfd, hname, page, post_message); else result = -1;
+//	
+//	close(sockfd);
 	
 	return result;
 }
